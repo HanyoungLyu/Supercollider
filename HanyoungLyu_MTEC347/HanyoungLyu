@@ -1,0 +1,58 @@
+1. Ambient SynthDef
+
+Main idea:
+A sustained generative tone built with LFO-based modulation, low-pass filtering, delay, and reverb.
+
+Signal Flow:
+
+Saw oscillator → LFO amplitude modulation → Envelope shaping → RLPF → Comb delay → Reverb → Stereo panning
+
+
+Key components:
+
+SinOsc.kr(0.1) – slow LFO controlling amplitude fluctuation
+
+Saw.ar(200 * SinOsc.kr(0.05).range(0.5, 2)) – frequency-modulated saw wave
+
+Env.asr(0.01, 1, 4) – attack–sustain–release envelope triggered by a gate
+
+RLPF.ar(..., MouseX.kr, MouseY.kr) – real-time filter control via mouse position
+
+CombC.ar(...) – subtle echo creating motion and density
+
+FreeVerb.ar(...) – stereo reverb adding spatial depth
+
+LFNoise2.kr(0.1) – slow panning motion across stereo field
+
+2. ChoirLayer SynthDef
+
+Main idea:
+A processed audio texture using a choir sample (Choir_A.wav) that loops and spatially evolves.
+
+Signal Flow:
+
+PlayBuf (sample playback) → RLPF → CombC delay → FreeVerb2 → Random panning
+
+
+Key components:
+
+PlayBuf.ar(2, buf, BufRateScale.kr(buf) * rate, loop:1) – stereo looping playback
+
+RLPF.ar(...) – dynamic low-pass filtering using mouse X/Y
+
+CombC.ar(...) – echo/delay for rhythmic depth
+
+FreeVerb2.ar(...) – stereo reverb simulation
+
+LFNoise2.kr(0.08) – random stereo position movement
+
+
+3. Control and Performance
+
+Mouse X → controls filter cutoff frequency (brightness)
+
+Mouse Y → controls filter resonance (texture sharpness)
+
+The Ambient layer sustains until x.set(\gate, 0) is triggered.
+
+The ChoirLayer loops indefinitely until manually freed.
