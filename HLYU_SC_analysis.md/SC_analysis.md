@@ -90,9 +90,11 @@ Variable meanings
 ~sunrise → sunrise time (e.g., 6)
 ~daylight → length of the day (e.g., 12)
 
-Condition 1:(~i <= ~sunrise) || (~i > (~daylight + ~sunrise))→ When the current time is before sunrise (0–6) or after sunset (>18),the system sets night mode:~night.play, ~nightTime = true.
+Condition 1:(~i <= ~sunrise) || (~i > (~daylight + ~sunrise))→ 
+When the current time is before sunrise (0–6) or after sunset (>18),the system sets night mode:~night.play, ~nightTime = true.
 
-Condition 2:(~i > ~sunrise) && (~i <= (~daylight + ~sunrise))→ When time is between sunrise and sunset (6–18),the system sets day mode:~day.play, ~nightTime = false.
+Condition 2:(~i > ~sunrise) && (~i <= (~daylight + ~sunrise))→ 
+When time is between sunrise and sunset (6–18),the system sets day mode:~day.play, ~nightTime = false.
 
 
 Each time slot triggers a behavioral synth• 04h – Conserve energy• 10h – Disperse• Noon – Light intensifies• 13h – Butterfly flight
