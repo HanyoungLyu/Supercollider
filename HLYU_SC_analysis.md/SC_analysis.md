@@ -70,7 +70,7 @@ Each full 24-hour loop forms one complete musical day, where sonic events mirror
 }).play;
 
 
-
+```
 ***
 Theme: Modeling nature’s circadian rhythm through sound
 Each “day” contains events like sunrise, daylight, rain, nighttime
@@ -99,4 +99,5 @@ When time is between sunrise and sunset (6–18),the system sets day mode:~day
 
 Each time slot triggers a behavioral synth• 04h – Conserve energy• 10h – Disperse• Noon – Light intensifies• 13h – Butterfly flight
 Represents life-cycle stages within a single day
+```
 
